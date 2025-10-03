@@ -1,13 +1,15 @@
 /* Base & Typography */
 html {
     scroll-behavior: smooth;
+    height: auto; /* Allow height to grow with content */
 }
 
 body {
     font-family: 'Century Gothic', 'Poppins', sans-serif;
     background-color: #ffffff;
     color: #1a1a1a; /* Updated text color to black */
-    margin: 0;
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    margin: 0; /* Reset default margin */
     padding: 0;
 }
 
@@ -143,8 +145,11 @@ input:focus, textarea:focus {
 
 .hero-bg {
     color: white;
-    height: 100vh;
-    min-height: 500px;
+    /* REMOVED: height: 100dvh; This causes issues in embeds. */
+    /* Use padding to create vertical space instead of a fixed height. */
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+    min-height: 500px; /* Keep a minimum height for larger screens */
 }
 .hero-video {
     position: absolute;
