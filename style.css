@@ -37,6 +37,7 @@ a {
 .items-center { align-items: center; }
 .items-start { align-items: start; }
 .text-center { text-align: center; }
+.text-left { text-align: left; }
 .relative { position: relative; }
 .absolute { position: absolute; }
 .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
@@ -45,6 +46,7 @@ a {
 .overflow-hidden { overflow: hidden; }
 .w-full { width: 100%; }
 .max-w-2xl { max-width: 42rem; }
+.max-w-xl { max-width: 36rem; }
 .max-w-3xl { max-width: 48rem; }
 .mx-auto { margin-left: auto; margin-right: auto; }
 
@@ -54,7 +56,7 @@ a {
 .mb-4 { margin-bottom: 1rem; }
 .mb-6 { margin-bottom: 1.5rem; }
 .mb-8 { margin-bottom: 2rem; }
-.mb-12 { margin-bottom: 3rem; }
+.mb-12 { margin-bottom: 2.5rem; } /* Reduced from 3rem */
 .mr-4 { margin-right: 1rem; }
 .mr-3 { margin-right: 0.75rem; }
 .mt-4 { margin-top: 1rem; }
@@ -67,8 +69,8 @@ a {
 .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
 .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-.section-padding { padding-top: 6rem; padding-bottom: 6rem; }
-.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+.section-padding { padding-top: 4.5rem; padding-bottom: 4.5rem; } /* Reduced from 6rem */
+.py-12 { padding-top: 2.5rem; padding-bottom: 2.5rem; } /* Reduced from 3rem */
 .py-24 { padding-top: 6rem; padding-bottom: 6rem; }
 .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
 .gap-8 { gap: 2rem; }
@@ -84,12 +86,13 @@ a {
 .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
 
 /* Typography */
-.text-sm { font-size: 0.875rem; }
-.text-lg { font-size: 1.125rem; }
-.text-xl { font-size: 1.25rem; }
-.text-2xl { font-size: 1.5rem; }
-.text-4xl { font-size: 2.25rem; }
-.text-5xl { font-size: 3rem; }
+.text-sm { font-size: 0.7rem; } /* 20% smaller */
+.text-base { font-size: 0.8rem; } /* 20% smaller */
+.text-lg { font-size: 0.9rem; } /* 20% smaller */
+.text-xl { font-size: 1rem; } /* 20% smaller */
+.text-2xl { font-size: 1.2rem; } /* 20% smaller */
+.text-4xl { font-size: 1.8rem; } /* 20% smaller */
+.text-5xl { font-size: 2.4rem; } /* 20% smaller */
 .font-semibold { font-weight: 600; }
 .font-bold { font-weight: 700; }
 .font-extrabold { font-weight: 800; }
@@ -105,9 +108,9 @@ a {
 .bg-red-600 { background-color: #dc2626; }
 .bg-red-700 { background-color: #b91c1c; }
 .text-white { color: #ffffff; }
-.text-black { color: #1a1a1a; }
+.text-black { color: #000000; }
 .text-gray-200 { color: #e5e7eb; }
-.text-gray-300 { color: #d1d5db; }
+.text-gray-300 { color: #aaadb3; }
 .text-slate-700 { color: #334155; }
 .text-slate-900 { color: #0f172a; }
 .text-red-500 { color: #ef4444; }
@@ -147,9 +150,9 @@ input:focus, textarea:focus {
     color: white;
     /* REMOVED: height: 100dvh; This causes issues in embeds. */
     /* Use padding to create vertical space instead of a fixed height. */
-    padding-top: 12rem;
-    padding-bottom: 12rem;
-    min-height: 500px; /* Keep a minimum height for larger screens */
+    height: 80vh; /* Set height to 80% of the viewport height */
+    display: flex;
+    align-items: center;
 }
 .hero-video {
     position: absolute;
@@ -164,6 +167,13 @@ input:focus, textarea:focus {
     object-fit: cover;
 }
 
+.hero-card {
+    background-color: rgba(0, 0, 0, 0.575); /* Semi-transparent dark slate */
+    padding: 2.5rem;
+    max-width: 48rem; /* Limit the width of the card */
+    border-radius: 0; /* Ensure sharp corners */
+}
+
 .cta-button {
     display: inline-block;
     transition: all 0.3s ease;
@@ -171,43 +181,76 @@ input:focus, textarea:focus {
 }
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px -5px rgba(220, 38, 38, 0.4);
+    box-shadow: 0 10px 20px -5px rgba(220, 38, 38, 0.979);
 }
 
 /* Red Section Headers */
 .section-title {
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 2rem; /* 20% smaller */
     letter-spacing: -0.025em;
     color: #dc2626; /* Red color */
 }
 .section-subtitle {
-    font-size: 1.125rem;
-    color: #1a1a1a; /* Black color */
+    font-size: 0.9rem; /* 20% smaller */
 }
 
-.service-card {
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    transition: all 0.3s ease;
-}
-.service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
-    border-color: #dc2626;
-}
-
-.service-button {
-    display: inline-block;
-    margin-top: 1rem;
-    font-weight: 600;
-    color: #dc2626;
-    transition: all 0.3s ease;
+/* --- New OML Card Component --- */
+.oml-card {
+    background-color: #000000; /* Black background */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border: 1px solid #000000; /* Matching border color */
 }
 
-.service-button:hover {
-    color: #b91c1c;
-    transform: translateX(4px);
+/* Hover effect specifically for cards within the #services section */
+#services .oml-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff; /* Change background to white on hover */
+}
+
+#services .oml-card:hover .oml-card__title a,
+#services .oml-card:hover .oml-card__description {
+    color: #1a1a1a; /* Change text to black on hover */
+}
+
+.oml-card__image-link {
+    display: block;
+    overflow: hidden;
+}
+
+.oml-card__image-link img {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+#services .oml-card:hover .oml-card__image-link img {
+    transform: scale(1.05);
+}
+
+.oml-card__content {
+    padding: 1.5rem;
+}
+
+.oml-card__title a {
+    font-size: 1rem; /* 20% smaller */
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.oml-card__description {
+    font-size: 0.8rem; /* 20% smaller */
+    color: #d1d5db; /* text-gray-300 */
+    margin-top: 0.75rem;
+    transition: color 0.3s ease;
 }
 
 .case-study-card img {
@@ -227,7 +270,7 @@ input:focus, textarea:focus {
     border: 2px solid #dc2626;
     color: #dc2626;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1rem; /* 20% smaller */
     margin-left: auto;
     margin-right: auto;
     transition: all 0.3s ease;
@@ -240,6 +283,7 @@ input:focus, textarea:focus {
 
 /* Testimonials Section */
 .testimonial-card {
+    background-color: #000000; /* bg-slate-800 for contrast */
     transition: all 0.3s ease;
 }
 .testimonial-card:hover {
@@ -296,13 +340,14 @@ input:focus, textarea:focus {
 
 /* Responsive Styles */
 @media (min-width: 768px) {
-    .md\:text-5xl { font-size: 3.5rem; }
-    .md\:text-xl { font-size: 1.25rem; }
+    .md\:text-5xl { font-size: 2.8rem; } /* 20% smaller */
+    .md\:text-xl { font-size: 1rem; } /* 20% smaller */
+    .md\:text-lg { font-size: 0.9rem; } /* 20% smaller */
     .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (min-width: 1024px) {
-    .lg\:text-6xl { font-size: 4rem; }
+    .lg\:text-6xl { font-size: 3.2rem; } /* 20% smaller */
     .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -339,4 +384,82 @@ input:focus, textarea:focus {
 @keyframes scroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+}
+
+/* --- Design Adjustment: Remove Rounded Corners from Cards --- */
+.oml-card,
+.case-study-card,
+.testimonial-card,
+.insight-card,
+.value-card,
+.team-card img,
+.about-us-image img,
+#contact form,
+#contact .bg-white {
+    border-radius: 0;
+}
+
+/* --- Background Image for Services Section --- */
+#services {
+    background-color: #000000; /* Set section background to match cards */
+}
+
+/* --- Gallery Grid Section --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 250px;
+    gap: 1rem;
+}
+
+.gallery-item {
+    overflow: hidden;
+    position: relative;
+    border-radius: 0; /* Ensure sharp corners */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.gallery-item__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    padding: 2rem 1rem 1rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-item__overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-item__description {
+    color: #ffffff;
+    font-size: 0.8rem;
+}
+/* Masonry layout adjustments for larger screens */
+@media (min-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .gallery-item.wide {
+        grid-column: span 2;
+    }
+    .gallery-item.tall {
+        grid-row: span 2;
+    }
 }
