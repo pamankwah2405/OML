@@ -43,13 +43,12 @@ document.addEventListener('DOMContentLoaded', function() {
         sr.reveal('.section-title', { origin: 'top' });
         sr.reveal('.section-subtitle', { origin: 'top', delay: 100 });
         sr.reveal('.about-us-image', { origin: 'left' });
-        sr.reveal('.service-card', { interval: 150, origin: 'bottom' });
-        sr.reveal('.case-study-card', { interval: 150, origin: 'bottom' });
+        // The '.oml-card' class is now used for both services and case studies
+        sr.reveal('.oml-card', { interval: 150, origin: 'bottom' });
         sr.reveal('.process-step', { interval: 150, origin: 'bottom' });
         sr.reveal('.stat-item', { interval: 150, origin: 'bottom' });
         sr.reveal('.testimonial-card', { interval: 150, origin: 'bottom' });
         sr.reveal('.value-card', { interval: 150, origin: 'bottom' });
-        sr.reveal('.team-card', { interval: 150, origin: 'bottom' });
         sr.reveal('.insight-card', { interval: 150, origin: 'bottom' });
         sr.reveal('#contact > .container > .grid > div:first-child', { origin: 'left' });
         sr.reveal('#contact > .container > .grid > div:last-child', { origin: 'right' });
