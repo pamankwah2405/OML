@@ -526,5 +526,18 @@
     <!-- Custom JavaScript -->
     <script src="script.js"></script>
 
+    <!-- Script to communicate height to parent iframe -->
+    <script>
+      function sendHeight() {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage({ type: "OML_HEIGHT", height }, "*");
+      }
+
+      window.addEventListener("load", sendHeight);
+      window.addEventListener("resize", sendHeight);
+      // If your content changes dynamically, you can also observe body changes:
+      new ResizeObserver(sendHeight).observe(document.body);
+    </script>
+
 </body>
 </html>

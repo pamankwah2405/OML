@@ -1,42 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {
-  class MyHomePage extends HTMLElement {
-    connectedCallback() {
-      // Create iframe element
-      const iframe = document.createElement('iframe');
-      iframe.src = "https://pamankwah2405.github.io/OML/";
-      iframe.style.width = "100%";
-      iframe.style.border = "none";
-      iframe.style.display = "block";
-      iframe.style.overflow = "hidden";
-      iframe.style.height = "1px"; // Start with a minimal height to avoid a large initial empty space.
+class MyHomePage extends HTMLElement {
+  connectedCallback() {
+    // Create iframe element
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://pamankwah2405.github.io/OML/";
 
-      const resizeIframe = () => {
-        // Use documentElement.scrollHeight for a more reliable content height
-        const contentHeight = iframe.contentWindow.document.documentElement.scrollHeight;
-        if (contentHeight > 1) {
-          iframe.style.height = contentHeight + "px";
-        }
-      };
+    // Apply styles
+    iframe.style.width = "100%";
+    iframe.style.border = "none";
+    iframe.style.display = "block";
+    iframe.style.overflow = "hidden";
+    iframe.style.height = "800px"; // Set a reasonable initial height to avoid content flash
 
-      // Adjust iframe height after content has loaded
-      iframe.onload = () => {
-        // Initial resize
-        resizeIframe();
+    // Listen for height messages from the iframe
+    window.addEventListener("message", (event) => {
+      // It's good practice to check the origin for security, but for now we'll check the message type.
+      // In production, you might want to add: if (event.origin !== "https://pamankwah2405.github.io") return;
 
-        // Use ResizeObserver to watch for content changes (e.g., from animations)
-        const resizeObserver = new ResizeObserver(resizeIframe);
-        
-        // A short delay helps ensure the observer attaches after initial rendering
-        setTimeout(() => {
-          const targetNode = iframe.contentWindow.document.body;
-          if (targetNode) resizeObserver.observe(targetNode);
-        }, 300); // 300ms delay
-      };
+      if (event.data && event.data.type === "OML_HEIGHT") {
+        const newHeight = event.data.height;
+        iframe.style.height = newHeight + "px";
+      }
+    });
 
-      // Add to the DOM
-      this.appendChild(iframe);
-    }
+    // Add the configured iframe to the custom element
+    this.appendChild(iframe);
   }
+}
 
-  customElements.define('myhome-page', MyHomePage);
-});
+customElements.define('myhome-page', MyHomePage);
