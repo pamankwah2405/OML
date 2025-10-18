@@ -7,11 +7,13 @@ class MyHomePage extends HTMLElement {
     iframe.style.border = "none";
     iframe.style.display = "block";
     iframe.style.overflow = "hidden";
-    iframe.style.height = "100vh"; // initial height
+    iframe.style.height = "1px"; // Start with a minimal height to avoid a large initial empty space.
 
-    // Prevent infinite growth
+    // Adjust iframe height after content has loaded
     iframe.onload = () => {
-      iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
+      // Use documentElement.scrollHeight for a more reliable content height
+      const contentHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+      iframe.style.height = contentHeight + "px";
     };
 
     // Add to the DOM
