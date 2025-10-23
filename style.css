@@ -197,8 +197,8 @@ input:focus, textarea:focus {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    min-height: 70vh; /* Adjust height as needed */
+    justify-content: flex-start; /* Align content to the left */
+    min-height: 500px; /* Use a fixed min-height instead of vh */
     padding: 4rem 2rem;
     text-align: left;
     overflow: hidden;
