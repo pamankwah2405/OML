@@ -87,6 +87,11 @@ a {
 .gap-6 { gap: 1.5rem; }
 .gap-12 { gap: 3rem; }
 
+/* New utility for equal height columns */
+#core-offerings .lg\:grid-cols-2 {
+    display: flex;
+}
+
 /* Flex & Grid */
 .flex-wrap { flex-wrap: wrap; }
 .justify-center { justify-content: center; }
@@ -197,8 +202,8 @@ input:focus, textarea:focus {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align content to the left */
-    min-height: 500px; /* Use a fixed min-height instead of vh */
+    justify-content: flex-start;
+    /* REMOVED min-height to allow content to define the height */
     padding: 4rem 2rem;
     text-align: left;
     overflow: hidden;
