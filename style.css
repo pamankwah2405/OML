@@ -87,11 +87,6 @@ a {
 .gap-6 { gap: 1.5rem; }
 .gap-12 { gap: 3rem; }
 
-/* New utility for equal height columns */
-#core-offerings .lg\:grid-cols-2 {
-    display: flex;
-}
-
 /* Flex & Grid */
 .flex-wrap { flex-wrap: wrap; }
 .justify-center { justify-content: center; }
@@ -202,11 +197,12 @@ input:focus, textarea:focus {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    /* REMOVED min-height to allow content to define the height */
+    justify-content: flex-start; /* REMOVED min-height to allow content to define the height */
     padding: 4rem 2rem;
     text-align: left;
     overflow: hidden;
+    min-height: 350px; /* Ensure a minimum height for visual consistency */
+    flex-grow: 1; /* Allow cards to grow and fill available horizontal space */
 }
 .hero-split-card__bg {
     position: absolute;
@@ -247,6 +243,10 @@ input:focus, textarea:focus {
 
 .section-subtitle {
     font-size: 1.25rem; /* 20pt -> 20px */
+}
+
+.section-title-dark, h2.text-white {
+    font-size: 2.5rem;
 }
 
 /* --- OML Card Component (for Services & Case Studies) --- */
@@ -338,6 +338,32 @@ input:focus, textarea:focus {
     white-space: nowrap;
 }
 
+/* --- Client Logo Scroller --- */
+.client-scroller {
+    display: flex;
+    width: max-content;
+    animation: scroll 60s linear infinite;
+}
+
+.client-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px; /* Consistent height for all logos */
+    margin: 0 2.5rem; /* Space between logos */
+}
+
+.client-logo img {
+    max-height: 100%;
+    width: auto;
+    filter: grayscale(100%) opacity(60%);
+    transition: filter 0.3s ease;
+}
+
+.client-logo:hover img {
+    filter: grayscale(0%) opacity(100%);
+}
+
 /* For ScrollReveal animations */
 .about-us-image, .service-card, .value-card, .case-study-card, .process-step, .stat-item, .testimonial-card, .insight-card, .oml-card {
     visibility: hidden;
@@ -354,6 +380,7 @@ input:focus, textarea:focus {
 @media (min-width: 1024px) {
     .lg\:text-6xl { font-size: 3.2rem; } /* 20% smaller */
     .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }    
     .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
