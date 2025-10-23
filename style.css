@@ -192,6 +192,29 @@ input:focus, textarea:focus {
     border-radius: 0; /* Ensure sharp corners */
 }
 
+/* New Hero Split-Card Styles */
+.hero-split-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh; /* Adjust height as needed */
+    padding: 4rem 2rem;
+    text-align: left;
+    overflow: hidden;
+}
+.hero-split-card__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.hero-split-card:hover .hero-split-card__bg {
+    transform: scale(1.05);
+}
+
 .cta-button {
     display: inline-block;
     transition: all 0.3s ease;
