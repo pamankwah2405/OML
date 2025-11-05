@@ -789,19 +789,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const statsSection = document.getElementById('stats');
     const statItems = document.querySelectorAll('.stat-item h3');
 
+    // A more robust counter animation function
     const animateCounter = (element) => {
         const target = +element.getAttribute('data-target');
         const duration = 2000; // 2 seconds
-        const stepTime = Math.abs(Math.floor(duration / target));
+        const frameDuration = 1000 / 60; // 60 frames per second
+        const totalFrames = Math.round(duration / frameDuration);
+        const increment = target / totalFrames;
         let current = 0;
 
         const timer = setInterval(() => {
-            current += 1;
-            element.innerText = current;
-            if (current === target) {
+            current += increment;
+            if (current >= target) {
                 clearInterval(timer);
+                element.innerText = target; // Ensure it ends on the exact target number
+            } else {
+                element.innerText = Math.round(current);
             }
-        }, stepTime);
+        }, frameDuration);
     };
 
     const observer = new IntersectionObserver((entries) => {

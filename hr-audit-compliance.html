@@ -19,6 +19,8 @@
 </head>
 <body>
 
+    <!-- Header will be injected here by main.js -->
+
     <main>
 
         <!-- 1. HERO SECTION START -->
@@ -47,31 +49,31 @@
                     <p class="text-lg text-black-300 mt-4">An independent HR compliance audit provides the objectivity needed to ensure legal adherence, drive transformation, and build a resilient workforce. It's a critical tool for governance and strategic alignment.</p>
                 </div>
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <!-- Left Column: Image -->
-                    <div>
-                        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A team of professionals in a strategic meeting" class="w-full shadow-xl">
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="why-card">
+                    <div class="grid md:grid-cols-2 gap-6 order-2 lg:order-1">
+                        <div class="why-card p-4">
                             <i class="fas fa-balance-scale text-brand-red text-3xl mb-4"></i>
                             <h3 class="font-bold text-xl text-brand-dark-gray mb-2">Ensure Legal Compliance</h3>
                             <p class="text-brand-dark-gray">Navigate complex labor laws to reduce litigation risk.</p>
                         </div>
-                        <div class="why-card">
+                        <div class="why-card p-4">
                             <i class="fas fa-search text-brand-red text-3xl mb-4"></i>
                             <h3 class="font-bold text-xl text-brand-dark-gray mb-2">Uncover Hidden Risks</h3>
                             <p class="text-brand-dark-gray">Identify inefficiencies, biases, and process gaps.</p>
                         </div>
-                        <div class="why-card">
+                        <div class="why-card p-4">
                             <i class="fas fa-shield-alt text-brand-red text-3xl mb-4"></i>
                             <h3 class="font-bold text-xl text-brand-dark-gray mb-2">Strengthen Governance</h3>
                             <p class="text-brand-dark-gray">Enhance transparency and build stakeholder trust.</p>
                         </div>
-                        <div class="why-card">
+                        <div class="why-card p-4">
                             <i class="fas fa-bullseye text-brand-red text-3xl mb-4"></i>
                             <h3 class="font-bold text-xl text-brand-dark-gray mb-2">Align Strategy</h3>
                             <p class="text-brand-dark-gray">Ensure people practices directly support business goals.</p>
                         </div>
+                    </div>
+                    <!-- Right Column: Image -->
+                    <div class="order-1 lg:order-2">
+                        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A team of professionals in a strategic meeting" class="w-full shadow-xl">
                     </div>
                 </div>
             </div>
@@ -79,13 +81,13 @@
         <!-- WHY IT MATTERS SECTION END -->
 
         <!-- 3. WHEN & WHO SECTION START -->
-        <section class="section-padding bg-brand-light-gray">
+        <section class="section-padding bg-brand-light-grey">
             <div class="container">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- White Card -->
-                    <div class="bg-white text-black p-8 lg:p-12 flex flex-col shadow-lg">
+                    <div class="bg-white text-black p-8 lg:p-12 shadow-lg">
                         <h2 class="text-3xl font-bold text-slate-900 mb-4">When to Conduct an Audit</h2>
-                        <p class="text-lg text-black mb-6 flex-grow">An independent HR audit is an annual, strategic necessity, ideally every 6–12 months. It should also be triggered by:</p>
+                        <p class="text-lg text-black mb-6">An independent HR audit is an annual, strategic necessity, ideally every 6–12 months. It should also be triggered by:</p>
                         <ul class="list-disc list-inside space-y-3 text-lg text-black">
                             <li>Major organisational changes (mergers, restructuring)</li>
                             <li>Labour disputes or rising compliance concerns</li>
@@ -94,10 +96,10 @@
                         </ul>
                     </div>
                     <!-- Red Card -->
-                    <div class="bg-red-600 text-white p-8 lg:p-12 flex flex-col">
-                        <h2 class="text-3xl font-bold text-white mb-4">Who Should Conduct an Audit</h2>
-                        <p class="text-lg text-gray-200 mb-6 flex-grow">Trust the experts. An audit must be led by an impartial HR audit firm. OML Africa brings deep expertise in:</p>
-                        <ul class="list-disc list-inside space-y-3 text-lg text-gray-200">
+                    <div class="bg-white text-black p-8 lg:p-12 shadow-lg">
+                        <h2 class="text-3xl font-bold text-slate-900 mb-4">Who Should Conduct an Audit</h2>
+                        <p class="text-lg text-black mb-6">Trust the experts. An audit must be led by an impartial HR audit firm. OML Africa brings deep expertise in:</p>
+                        <ul class="list-disc list-inside space-y-3 text-lg text-black">
                             <li>Pan-African labor law compliance</li>
                             <li>HR analytics and compensation benchmarking</li>
                             <li>Sector-specific audits for mining, oil & gas, and banking</li>
@@ -224,8 +226,11 @@
 
     </main>
 
+    <!-- Footer will be injected here by main.js -->
+
     <!-- Custom JavaScript -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <script src="main.js"></script>
 
     <!-- Script to communicate height to parent iframe -->
     <script>

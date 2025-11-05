@@ -1,56 +1,49 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // --- Animated Stats Counter ---
-    const statsSection = document.getElementById('stats');
-    const statItems = document.querySelectorAll('.stat-item h3');
+document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll('.counter-value');
 
-    const animateCounter = (element) => {
-        const target = +element.getAttribute('data-target');
-        const duration = 2000; // 2 seconds
-        const stepTime = Math.abs(Math.floor(duration / target));
-        let current = 0;
+    if (counters.length === 0) {
+        console.warn("No elements with class 'counter-value' found for the counting animation.");
+        return;
+    }
 
-        const timer = setInterval(() => {
-            current += 1;
-            element.innerText = current;
-            if (current === target) {
-                clearInterval(timer);
+    const animateCounter = (counter) => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 2000; // Animation duration in milliseconds
+        let startTimestamp = null;
+
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const currentValue = Math.floor(progress * target);
+            
+            counter.innerText = currentValue;
+
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                counter.innerText = target; // Ensure it ends on the exact target
             }
-        }, stepTime);
+        };
+
+        window.requestAnimationFrame(step);
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
+            // When the element is in view
             if (entry.isIntersecting) {
-                statItems.forEach(item => animateCounter(item));
-                observer.unobserve(statsSection); // Animate only once
+                animateCounter(entry.target);
+                // Stop observing the element once the animation has been triggered
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.5 });
+    }, {
+        root: null, // relative to the viewport
+        threshold: 0.1 // trigger when 10% of the element is visible
+    });
 
-    observer.observe(statsSection);
-
-    // --- ScrollReveal Animations ---
-    if (typeof ScrollReveal !== 'undefined') {
-        const sr = ScrollReveal({
-            distance: '50px',
-            duration: 1000,
-            easing: 'cubic-bezier(0.5, 0, 0, 1)',
-            reset: false // Animations will only run once
-        });
-
-        // Reveal animations for different sections
-        sr.reveal('.section-title', { origin: 'top' });
-        sr.reveal('.section-subtitle', { origin: 'top', delay: 100 });
-        sr.reveal('.about-us-image', { origin: 'left' });
-        // The '.oml-card' class is now used for both services and case studies
-        sr.reveal('.oml-card', { interval: 150, origin: 'bottom' });
-        sr.reveal('.process-step', { interval: 150, origin: 'bottom' });
-        sr.reveal('.stat-item', { interval: 150, origin: 'bottom' });
-        sr.reveal('.testimonial-card', { interval: 150, origin: 'bottom' });
-        sr.reveal('.value-card', { interval: 150, origin: 'bottom' });
-        sr.reveal('.insight-card', { interval: 150, origin: 'bottom' });
-        sr.reveal('#contact > .container > .grid > div:first-child', { origin: 'left' });
-        sr.reveal('#contact > .container > .grid > div:last-child', { origin: 'right' });
-    }
+    // Observe each counter
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
 });

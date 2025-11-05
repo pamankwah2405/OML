@@ -17,6 +17,8 @@
 
 <body>
 
+    <!-- Header will be injected here by main.js -->
+
     <main>
         <!-- HERO SECTION START -->
         <section id="home" class="hero-bg relative overflow-hidden flex items-center justify-center py-24">
@@ -59,7 +61,10 @@
                     <div class="relative z-10 max-w-xl">
                         <h2 class="text-3xl md:text-4xl font-extrabold leading-tight mb-4">Employer of Record (EOR)</h2>
                         <p class="text-lg text-gray-200 mb-8">Expand your team across Africa without the complexity of establishing a local entity. We handle payroll, compliance, and HR, so you can focus on growth.</p>
-                        <a href="hr-audit-compliance.html" class="bg-white text-red-700 font-bold py-3 px-8 text-lg cta-button">Learn More</a>
+                        <a href="hr-audit-compliance.html" class="bg-white text-red-700 font-bold py-3 px-8 text-lg cta-button">
+                            Learn More
+                            <span class="sr-only"> about Employer of Record services</span>
+                        </a>
                     </div>
                 </div>
                 <!-- Outsourcing Card (Black) -->
@@ -69,7 +74,7 @@
                     <div class="relative z-10 max-w-xl">
                         <h2 class="text-3xl md:text-4xl font-extrabold leading-tight mb-4">HR & Payroll Outsourcing</h2>
                         <p class="text-lg text-gray-200 mb-8">Streamline your operations with our expert HR and payroll outsourcing services. Ensure accuracy, compliance, and efficiency while reducing administrative burden.</p>
-                        <a href="payroll-service.html" class="bg-red-600 text-white font-bold py-3 px-8 text-lg cta-button">Discover Solutions</a>
+                        <a href="hr-audit-compliance.html" class="bg-red-600 text-white font-bold py-3 px-8 text-lg cta-button">Discover Solutions</a>
                     </div>
                 </div>
             </div>
@@ -101,39 +106,41 @@
         </section>
         <!-- ABOUT US SECTION END -->
         
-        <!-- TRAININGS AND IMPACT GALLERY START -->
-        <section id="trainings" class="section-padding bg-black">
+        <!-- TRAININGS AND IMPACT GALLERY START (REDESIGNED FOR FULL-WIDTH) -->
+        <section id="trainings" class="section-padding bg-black-red-gradient">
             <div class="container">
                 <div class="text-center mb-12">
-                    <h2 class="section-title">Trainings and Impact</h2>
-                    <p class="section-subtitle mt-4 max-w-2xl mx-auto text-gray-300">A glimpse into our work empowering professionals across Africa.</p>
+                    <h2 class="section-title text-white">Trainings and Impact</h2>
+                    <p class="section-subtitle mt-4 max-w-2xl mx-auto text-gray-200">A glimpse into our work empowering professionals across Africa.</p>
                 </div>
+            </div>
+            <div>
                 <div class="gallery-grid">
-                    <div class="gallery-item tall">
+                    <div class="gallery-item gallery-item--h-2">
                         <img src="https://static.wixstatic.com/media/98a4c4_4809b10bc4c248aea8bbdd04ba558391~mv2.jpeg" alt="A Black professional woman leading an executive coaching session">
                         <div class="gallery-item__overlay">
                             <p class="gallery-item__description">Leadership & Executive Coaching</p>
                         </div>
                     </div>
-                    <div class="gallery-item">
+                    <div class="gallery-item gallery-item--w-2">
                         <img src="https://static.wixstatic.com/media/98a4c4_7f4c9a214a2b4ba192135c164ec7a517~mv2.jpeg" alt="A diverse team collaborating in a strategy workshop">
                         <div class="gallery-item__overlay">
                             <p class="gallery-item__description">Collaborative Strategy Workshops</p>
                         </div>
                     </div>
-                    <div class="gallery-item wide">
+                    <div class="gallery-item gallery-item--h-2">
                         <img src="https://static.wixstatic.com/media/98a4c4_106f13fdec534cf39bacbe40792e4778~mv2.jpeg" alt="A Black man presenting data on a glass wall during a process improvement session">
                         <div class="gallery-item__overlay">
                             <p class="gallery-item__description">Data-Driven Process Improvement</p>
                         </div>
                     </div>
-                    <div class="gallery-item">
+                    <div class="gallery-item gallery-item--w-2">
                         <img src="https://static.wixstatic.com/media/98a4c4_deacceaf23c2460e99ee8e560523f448~mv2.jpeg" alt="Two Black colleagues having a positive discussion in an office">
                         <div class="gallery-item__overlay">
                             <p class="gallery-item__description">Fostering Positive Workplace Culture</p>
                         </div>
                     </div>
-                    <div class="gallery-item">
+                    <div class="gallery-item gallery-item--h-2">
                         <img src="https://static.wixstatic.com/media/98a4c4_9ecce42900c446669a320f880f2e8e3c~mv2.jpeg" alt="A smiling Black businesswoman at her desk, representing female leadership">
                         <div class="gallery-item__overlay">
                             <p class="gallery-item__description">Empowering Female Leaders</p>
@@ -145,7 +152,7 @@
                             <p class="gallery-item__description">Public Speaking & Communication</p>
                         </div>
                     </div>
-                     <div class="gallery-item">
+                    <div class="gallery-item gallery-item--h-2">
                         <img src="https://static.wixstatic.com/media/98a4c4_dca9d2e99f87448197969c27311634de~mv2.jpeg" alt="A group of young, diverse professionals collaborating on laptops">
                         <div class="gallery-item__overlay">
                             <p class="gallery-item__description">Next-Generation Talent Development</p>
@@ -153,8 +160,8 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- TRAININGS AND IMPACT GALLERY END -->
+        </section> 
+        <!-- TRAININGS AND IMPACT GALLERY END (REDESIGNED FOR FULL-WIDTH) -->
         
         <!-- OUR PROCESS SECTION START -->
         <section id="our-process" class="section-padding bg-slate-50">
@@ -304,17 +311,21 @@
                             <img src="https://images.pexels.com/photos/3184431/pexels-photo-3184431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A professional HR manager reviewing documents">
                         </a>
                         <div class="oml-card__content">
-                            <h3 class="oml-card__title"><a href="payroll-service.html">Payroll Outsourcing</a></h3>
+                            <a href="payroll-service.html" class="oml-card__title-link">
+                                <h3 class="oml-card__title">Payroll Outsourcing</h3>
+                            </a>
                             <p class="oml-card__description">Comprehensive HR management, from payroll to compliance, allowing you to focus on your core business.</p>
                         </div>
                     </div>
                     <!-- Service Card 2: Audit & Assurance -->
                     <div class="oml-card">
-                        <a href="hr-audit-compliance.html" class="oml-card__image-link">
+                        <a href="hr-audit-compliance.html" class="oml-card__image-link" aria-hidden="true" tabindex="-1">
                             <img src="https://images.pexels.com/photos/7551673/pexels-photo-7551673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="An auditor examining financial charts and graphs">
                         </a>
                         <div class="oml-card__content">
-                            <h3 class="oml-card__title"><a href="hr-audit-compliance.html">HR Audit & Compliance</a></h3>
+                            <h3 class="oml-card__title">
+                                <a href="hr-audit-compliance.html">HR Audit & Compliance</a>
+                            </h3>
                             <p class="oml-card__description">Independent audits that provide clarity, mitigate risk, and build stakeholder confidence.</p>
                         </div>
                     </div>
@@ -595,8 +606,11 @@
 
     </main>
 
+    <!-- Footer will be injected here by main.js -->
+
     <!-- Custom JavaScript -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <script src="main.js"></script>
 
     <!-- Script to communicate height to parent iframe -->
     <script>
