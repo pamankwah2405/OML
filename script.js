@@ -1,49 +1,52 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const counters = document.querySelectorAll('.counter-value');
+git document.addEventListener("DOMContentLoaded", () => {
+    // --- Animated Stats Counter ---
+    const counters = document.querySelectorAll('[data-target]');
+    if (counters.length > 0) {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    let current = 0;
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16); // ~60fps
 
-    if (counters.length === 0) {
-        console.warn("No elements with class 'counter-value' found for the counting animation.");
-        return;
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = target; // Ensure it ends on the exact target
+                        }
+                    };
+                    requestAnimationFrame(updateCounter);
+                    observer.unobserve(counter); // Animate only once
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => observer.observe(counter));
     }
 
-    const animateCounter = (counter) => {
-        const target = +counter.getAttribute('data-target');
-        const duration = 2000; // Animation duration in milliseconds
-        let startTimestamp = null;
-
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const currentValue = Math.floor(progress * target);
-            
-            counter.innerText = currentValue;
-
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            } else {
-                counter.innerText = target; // Ensure it ends on the exact target
-            }
-        };
-
-        window.requestAnimationFrame(step);
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            // When the element is in view
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                // Stop observing the element once the animation has been triggered
-                observer.unobserve(entry.target);
-            }
+    // --- Modern ScrollReveal Animations ---
+    if (typeof ScrollReveal !== 'undefined') {
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '60px',
+            duration: 1200,
+            delay: 100,
+            opacity: 0,
+            easing: 'cubic-bezier(0.5, 0, 0, 1)',
+            reset: false, // Animations will only run once
+            viewFactor: 0.2, // Element is revealed when 20% is visible
+            mobile: true // Animations run on mobile devices
         });
-    }, {
-        root: null, // relative to the viewport
-        threshold: 0.1 // trigger when 10% of the element is visible
-    });
 
-    // Observe each counter
-    counters.forEach(counter => {
-        observer.observe(counter);
-    });
+        // General reveal for titles and cards
+        sr.reveal('.section-title-dark, .section-title');
+        sr.reveal('.oml-card, .service-tile, .value-card, .testimonial-card', { interval: 150 });
+        sr.reveal('.how-we-help-item', { interval: 200 });
+        sr.reveal('img.shadow-xl, .img-container-constrained');
+    }
 });

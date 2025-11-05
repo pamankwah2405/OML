@@ -115,10 +115,6 @@
                 <p class="mt-4 text-lg text-gray-200 max-w-3xl mx-auto animate-fade-in-up">
                     We deliver effective HR management systems that maximize your people’s performance and achieve your overall business strategy.
                 </p>
-                <div class="flex flex-wrap justify-center gap-4 mt-8 animate-fade-in-up">
-                    <a href="#contact-form" class="bg-red-600 text-white font-bold py-3 px-8 text-lg cta-button">Speak to us</a>
-                    <a href="#core-services" class="bg-white text-black font-bold py-3 px-8 text-lg cta-button">Explore services</a>
-                </div>
                 <div class="mt-8 text-center">
                     <p class="text-gray-200">Trusted by SMEs, family businesses, and international teams</p>
                     <a href="tel:+233302973379" class="text-white font-semibold text-lg hover:text-red-500 transition-colors">+233 302973379 — Call us</a>
@@ -280,7 +276,7 @@
 
         <!-- 6. EOR & PAYROLL SECTION -->
         <section id="eor-payroll" class="section-padding bg-black-red-gradient text-white">
-            <div class="container">
+            <div class="container text-center">
                 <div class="text-center mb-12 reveal-fade">
                     <h2 class="section-title">Simplify Your African Expansion with EOR & Payroll</h2>
                     <p class="section-subtitle mt-4 max-w-2xl mx-auto text-gray-300">Our flagship solutions for hiring and paying talent across Africa, without the complexity of setting up a local entity.</p>
@@ -397,5 +393,17 @@
     <!-- Custom JavaScript -->
     <script src="script.js" defer></script>
     <script src="main.js"></script>
+
+    <!-- Script to communicate height to parent iframe -->
+    <script>
+      function sendHeight() {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage({ type: "OML_HEIGHT", height }, "*");
+      }
+
+      window.addEventListener("load", sendHeight);
+      window.addEventListener("resize", sendHeight);
+      new ResizeObserver(sendHeight).observe(document.body);
+    </script>
 </body>
 </html>
